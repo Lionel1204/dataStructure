@@ -4,8 +4,8 @@ class Node(object):
   __next = None
 
   def __init__(self, data, nextdata=None):
-    self.__data = data
-    self.__next = nextdata
+    self.data = data
+    self.next = nextdata
 
   @property
   def data(self):
@@ -13,7 +13,7 @@ class Node(object):
 
   @data.setter
   def data(self, value):
-    self.data = value
+    self.__data = value
 
   @property
   def next(self):
@@ -23,19 +23,23 @@ class Node(object):
   def next(self, value=None):
     self.__next = value
 
+
 class LinkedList(object):
   __head = None
 
   def __init__(self, data = None):
     if not data:
-      return Node(None)
-
-    self.__head = self.initLinkedList(data)
+      self.head = Node(None)
+    else:
+      self.head = self.initLinkedList(data)
 
   @property
   def head(self):
     return self.__head
 
+  @head.setter
+  def head(self, value):
+    self.__head = value
 
   # Linked list with guard
   def initLinkedList(self, data):
@@ -109,5 +113,5 @@ def main():
   h.output()
 
 
-if __name__ == '__main__':
-  main()
+#if __name__ == '__main__':
+#  main()
